@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
@@ -24,7 +23,7 @@ export const Content = styled.div`
       margin-top: 34px;
       border-radius: 50%;
       overflow: hidden;
-      
+
       width: 64px;
       height: 64px;
 
@@ -44,7 +43,7 @@ export const Content = styled.div`
     display: flex;
   }
 `
-export const PageBack = styled(Link)`
+export const PageBack = styled.button`
   margin-top: 30px;
   width: 300px;
 `

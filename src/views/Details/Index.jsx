@@ -3,7 +3,7 @@ import { Container, Content, PageBack } from './styles'
 import { Button } from '../../components/Button'
 import { Section } from '../../components/Section'
 
-export function Details() {
+export function DetailsView() {
   return (
     <Container>
       <Content>
@@ -52,7 +52,7 @@ export function Details() {
           </a>
         </Section>
       </Content>
-      <PageBack to="/">
+      <PageBack>
         <Button title="Voltar" />
       </PageBack>
     </Container>
