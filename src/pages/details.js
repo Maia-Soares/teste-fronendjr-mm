@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import { DetailsView } from '../views/Detail'
+
 export default function Details() {
   return (
     <>
@@ -8,7 +10,7 @@ export default function Details() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <span>Details</span>
+      <DetailsView />
     </>
   )
 }
