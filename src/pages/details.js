@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { DetailsView } from '../views/Details'
+import { DetailsView } from '../views/Detail'
 
 export default function Details() {
   return (
