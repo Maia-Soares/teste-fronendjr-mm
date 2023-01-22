@@ -13,7 +13,7 @@ export const Content = styled.div`
   width: 500px;
 
   > div {
-    margin-top: 300px;
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
 
@@ -43,7 +43,7 @@ export const Content = styled.div`
     display: flex;
   }
 `
-export const PageBack = styled.button`
+export const PageBack = styled.div`
   margin-top: 30px;
   width: 300px;
 `
