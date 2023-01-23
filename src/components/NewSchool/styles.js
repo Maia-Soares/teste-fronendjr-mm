@@ -21,6 +21,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 24px;
+    flex-wrap: wrap;
 
     border: 1px solid ${({ theme }) => theme.COLORS.GRAY_100};
 
