@@ -1,6 +1,6 @@
 import { Container, Content, PageBack } from './styles'
+import Link from 'next/link'
 
-import { Button } from '../../components/Button'
 import { Section } from '../../components/Section'
 
 export function DetailsView() {
@@ -21,6 +21,9 @@ export function DetailsView() {
             />
           </div>
         </div>
+        <Section title="Linguagens utilizadas">
+          <p>REACT.JS</p>
+        </Section>
         <Section title="Sugestões">
           <p>
             Como sugestão, acredito ser interessante pensar na interface e
@@ -53,7 +56,7 @@ export function DetailsView() {
         </Section>
       </Content>
       <PageBack>
-        <Button title="Voltar" />
+        <Link href="/home">Voltar</Link>
       </PageBack>
     </Container>
   )

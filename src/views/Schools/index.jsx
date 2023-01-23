@@ -7,6 +7,7 @@ import { Header } from '../../components/Header'
 import { Filter } from '../../components/Filter'
 import { Modal } from '../../components/Modal'
 import { FilterCityForm } from '../../components/FilterCityForm'
+import { NewSchool } from '../../components/NewSchool'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -24,25 +25,25 @@ export function SchoolsView() {
     customContent: null
   })
 
-  const handleListWithNameFiltered = async (value) => {
+  const handleListWithNameFiltered = async value => {
     try {
-      let response;
+      let response
 
       if (value.length === 0) {
         response = await axios.get(`/api/schools`)
       } else {
         response = await axios.get(`/api/schools?name=${value}`)
       }
-      
+
       setInitialData(response.data[1])
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
-  const onSearch = (event) => {
+  const onSearch = event => {
     const value = event.target.value
-    
+
     if (time) clearTimeout(time)
     const tempTime = setTimeout(() => {
       handleListWithNameFiltered(value)
@@ -55,14 +56,14 @@ export function SchoolsView() {
       const response = await axios.get('/api/schools')
       setInitialData(response.data[1])
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   useEffect(() => {
     if (initialData.length === 0 && !dataFetchedRef.current) {
       dataFetchedRef.current = true
-      handleFetchData();
+      handleFetchData()
     }
   }, [initialData, dataFetchedRef.current])
 
@@ -72,11 +73,15 @@ export function SchoolsView() {
 
       <div>
         <div id="search">
-          <Input placeholder="Nome da escola..." type="text" onChange={onSearch} />
+          <Input
+            placeholder="Pesquisar escola..."
+            type="text"
+            onChange={onSearch}
+          />
         </div>
 
         <div id="options">
-          <Filter 
+          <Filter
             onClick={() => {
               setModalData({
                 title: 'Filtro',
@@ -86,16 +91,16 @@ export function SchoolsView() {
               setShowModal(true)
             }}
           />
-          <Button 
-            title="Cadastrar Escola" 
+          <Button
+            title="Cadastrar Escola"
             onClick={() => {
               setModalData({
                 title: 'Nova Escola',
                 icon: null,
-                customContent: null
+                customContent: NewSchool
               })
               setShowModal(true)
-            }} 
+            }}
           />
         </div>
       </div>
@@ -108,16 +113,14 @@ export function SchoolsView() {
         </ul>
       )}
 
-      {initialData.length === 0 && (
-        <span>Nenhum dado encontrado</span>
-      )}
+      {initialData.length === 0 && <span>Nenhum dado encontrado</span>}
 
       {showModal && (
-        <Modal 
-          onClose={() => setShowModal(false)} 
-          title={modalData.title} 
+        <Modal
+          onClose={() => setShowModal(false)}
+          title={modalData.title}
           icon={modalData.icon}
-          customContent={modalData.customContent} 
+          customContent={modalData.customContent}
         />
       )}
     </Container>

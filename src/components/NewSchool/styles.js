@@ -10,8 +10,23 @@ export const Container = styled.div`
   > input {
     width: 100%;
     padding: 12px;
+    margin-bottom: 24px;
 
     border: 1px solid ${({ theme }) => theme.COLORS.GRAY_100};
+  }
+
+  #Location,
+  #Periods {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    border: 1px solid ${({ theme }) => theme.COLORS.GRAY_100};
+
+    > input {
+      margin: 12px;
+    }
   }
 
   > button {

@@ -9,7 +9,7 @@ export function Header({ title = '' }) {
 
   return (
     <Container title={title}>
-      <button onClick={() => router.push('/')}>
+      <button onClick={() => router.push('/home')}>
         <img
           src="https://mobieduca.me/imgs/mobiazul.png"
           alt="Logo mobieduca.me"
