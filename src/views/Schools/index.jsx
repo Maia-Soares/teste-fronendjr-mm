@@ -67,6 +67,52 @@ export function SchoolsView() {
     }
   }, [initialData, dataFetchedRef.current])
 
+  /* CITY FILTER ------ INICIAL------ */
+
+  const handleListWithCityFiltered = async value => {
+    try {
+      let response
+
+      if (value.length === 0) {
+        response = await axios.get(`/api/cities`)
+      } else {
+        response = await axios.get(`/api/cites?name=${value}`)
+      }
+
+      setInitialData(response.data[1])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const onFilter = event => {
+    const value = event.target.value
+
+    if (time) clearTimeout(time)
+    const tempTime = setTimeout(() => {
+      handleListWithCityFiltered(value)
+    }, 2000)
+    setTime(tempTime)
+  }
+
+  const handleFetchCityData = async () => {
+    try {
+      const response = await axios.get('/api/cities')
+      setInitialData(response.data[1])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (initialData.length === 0 && !dataFetchedRef.current) {
+      dataFetchedRef.current = true
+      handleFetchCityData()
+    }
+  }, [initialData, dataFetchedRef.current])
+
+  /* CITY FILTER ------ END ------ */
+
   return (
     <Container>
       <Header title="Escolas Cadastradas" />
@@ -90,6 +136,7 @@ export function SchoolsView() {
               })
               setShowModal(true)
             }}
+            onChange={onFilter}
           />
           <Button
             title="Cadastrar Escola"
